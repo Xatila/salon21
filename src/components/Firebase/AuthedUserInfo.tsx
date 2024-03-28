@@ -56,7 +56,7 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
         .then(() => {
           alert("Успешно запазихте час!");
         })
-        .catch((error) => {
+        .catch((_error) => {
           alert("Грешка! Неуспешно запазване на час.");
         });
     } else {

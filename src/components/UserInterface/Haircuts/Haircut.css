@@ -11,6 +11,7 @@
 }
 .haircutCard {
   width: 300px;
+  cursor: pointer;
   position: relative;
   overflow: hidden;
   border: 1px solid #ccc;

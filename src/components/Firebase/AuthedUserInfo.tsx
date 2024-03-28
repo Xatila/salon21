@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { doc, getFirestore, setDoc, collection, getDocs } from "firebase/firestore";
+import {
+  doc,
+  getFirestore,
+  setDoc,
+  collection,
+  getDocs,
+} from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase";
-
+import "./SaveHourButton.css";
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -13,7 +19,6 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
   const [inputPhone, setInputPhone] = useState<number | "">("");
   const [inputDate, setInputDate] = useState("");
   const [inputHour, setInputHour] = useState("");
-
   useEffect(() => {
     const checkUsersCollection = async () => {
       const usersRef = collection(db, "users");
@@ -62,6 +67,7 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
         Дата: " " + inputDate,
         Час: " " + inputHour,
         Услуга: " " + selectedHaircut,
+        Телефон: " " + inputPhone,
       };
 
       setDoc(doc(db, "users", inputName), userDetails)

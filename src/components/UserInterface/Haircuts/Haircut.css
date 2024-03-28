@@ -1,0 +1,117 @@
+.haircutsContainer {
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  margin-top: 10%;
+  flex-wrap: wrap;
+}
+.clicked {
+  background-color: lightblue;
+}
+.haircutCard {
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.haircutCard:hover {
+  transform: scale(1.05);
+}
+
+.haircutImageContainer {
+  backdrop-filter: blur(72px);
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.haircutImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.haircutCard:hover .card-content {
+  opacity: 1;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 16px;
+  text-align: center;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.haircutTitle {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.dateTimeContainer {
+  background: rgb(24, 255, 101);
+  background: linear-gradient(
+    356deg,
+    rgba(24, 255, 101, 1) 0%,
+    rgba(3, 68, 14, 1) 100%
+  );
+  border-radius: 24px;
+  width: 97.5%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  margin-top: 60px;
+  gap: 24px;
+}
+input {
+  width: 50%;
+  font-size: large;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+.nameAndNumber::placeholder {
+  color: rgb(187, 185, 185);
+}
+input[type="date"] {
+  width: 50%;
+  font-size: large;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+input[type="time"] {
+  width: 50%;
+  font-size: large;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  color: #666; /* Placeholder text color */
+  opacity: 1; /* Ensure placeholder is visible */
+}
+@media (max-width: 768px) {
+  .haircutsContainer {
+    margin-top: 25%;
+  }
+  .dateTimeContainer {
+    margin-top: 10%;
+    width: 87%;
+  }
+}

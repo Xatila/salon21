@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
+import { doc, getFirestore, setDoc, collection, getDocs } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "./firebase";
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -12,6 +13,18 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
   const [inputPhone, setInputPhone] = useState<number | "">("");
   const [inputDate, setInputDate] = useState("");
   const [inputHour, setInputHour] = useState("");
+
+  useEffect(() => {
+    const checkUsersCollection = async () => {
+      const usersRef = collection(db, "users");
+      const usersSnapshot = await getDocs(usersRef);
+      if (usersSnapshot.empty) {
+        // Create the "users" collection if it doesn't exist
+        await setDoc(doc(db, "users", "initialDocument"), { exists: true });
+      }
+    };
+    checkUsersCollection();
+  }, []);
 
   const handleInputChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
@@ -28,6 +41,7 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
       setInputPhone(inputValue === "" ? "" : parseInt(inputValue));
     }
   };
+
   const handleInputChange3 = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputDate(event.target.value);
   };
@@ -44,15 +58,13 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
       inputDate !== "" &&
       inputHour !== ""
     ) {
-      const userDocRef = doc(db, "users");
-
       const userDetails = {
         Дата: " " + inputDate,
         Час: " " + inputHour,
         Услуга: " " + selectedHaircut,
       };
 
-      setDoc(userDocRef, userDetails)
+      setDoc(doc(db, "users", inputName), userDetails)
         .then(() => {
           alert("Успешно запазихте час!");
         })

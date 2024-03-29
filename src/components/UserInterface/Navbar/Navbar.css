@@ -64,8 +64,9 @@ a :hover {
 
 .logo {
   cursor: pointer;
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 90%;
+  padding: 6px;
 }
 .logo:hover {
   transition: all 0.3s;
@@ -74,7 +75,7 @@ a :hover {
 
 .logoWrapper {
   width: 5%;
-  height: 72px;
+  height: 64px;
 }
 
 @media (max-width: 768px) {

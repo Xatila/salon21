@@ -20,6 +20,7 @@
 .product-image {
   width: 100%;
   height: auto;
+  filter: grayscale(100%);
 }
 .product-image:hover {
   transform: scale(1.3);

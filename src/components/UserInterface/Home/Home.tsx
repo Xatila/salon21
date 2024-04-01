@@ -15,7 +15,7 @@ const Home = () => {
       <ImageSlider />
       <div className="productWrapper"></div>
       <div className="productsContainer">
-        {products.map((p)=><Product key={p.id} title={p.title} image={p.image} price={p.price}/>)}
+        {products.map((p)=><Product key={p.id} title={p.title} image={p.image} price={p.price} id={p.id}/>)}
       </div>
     </>
   );

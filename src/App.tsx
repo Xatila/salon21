@@ -1,18 +1,20 @@
-import './App.css'
-import Reservation from './components/UserInterface/Haircuts/Reservation'
+import "./App.css";
+import Reservation from "./components/UserInterface/Haircuts/Reservation";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from './components/UserInterface/Home/Home';
+import Home from "./components/UserInterface/Home/Home";
+import ProductDetail from "./components/UserInterface/Home/Products/ProductDetail";
 function App() {
   return (
-      <BrowserRouter>
+    <BrowserRouter>
       <div>
-        <Routes>   
-        <Route path="/" element={<Home />} />
+        <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/reservation" element={<Reservation />} />
+          <Route path="/product/:id" element={<ProductDetail/>} />
         </Routes>
       </div>
-    </BrowserRouter> 
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;

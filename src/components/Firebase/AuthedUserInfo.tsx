@@ -20,7 +20,7 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
     null | "success" | "error"
   >(null);
   const [inputName, setInputName] = useState("");
-  const [inputPhone, setInputPhone] = useState<number | "">("");
+  const [inputPhone, setInputPhone] = useState<string | "">("");
   const [inputDate, setInputDate] = useState("");
   const [inputHour, setInputHour] = useState("");
   useEffect(() => {
@@ -44,10 +44,10 @@ const AuthedUserInfo = ({ selectedHaircut }: { selectedHaircut: string }) => {
 
   const handleInputChange2 = (event: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.target.value;
-    const regex = /^[0-9\s]*$/;
-    if (regex.test(inputValue)) {
-      setInputPhone(inputValue === "" ? "" : inputValue === "0" ? 0 : parseInt(inputValue));
-    }
+  const onlyNumbers = /^[0-9]*$/;
+  if (onlyNumbers.test(inputValue) || inputValue === "") {
+    setInputPhone(inputValue);
+  }
   };
   
 
